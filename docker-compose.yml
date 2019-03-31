@@ -1,0 +1,41 @@
+version: '3'
+
+services:
+
+  elements1:
+    build:
+      context: ./elements
+    image: elements
+    container_name: elements1
+    hostname: elements1
+    ports:
+      - "20001:18443"
+    networks:
+      - elements-network
+    command: >
+      /bin/bash -c "
+        /elements/src/elementsd \
+          -port=10001 \
+          -connect=elements2:10002 &&
+        tail -f /dev/null"
+
+  elements2:
+    build:
+      context: ./elements
+    image: elements
+    container_name: elements2
+    hostname: elements2
+    ports:
+      - "20002:18443"
+    networks:
+      - elements-network
+    command: >
+      /bin/bash -c "
+        /elements/src/elementsd \
+          -port=10002 \
+          -connect=elements1:10001 &&
+        tail -f /dev/null"
+
+networks:
+  elements-network:
+    external: true
