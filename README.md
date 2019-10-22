@@ -24,12 +24,12 @@ Also, they run as docker containers.
 * installation
 
 ```bash
-$ git clone https://github.com/kadokko/multi-elements.git
-$ cd multi-elements
+$ git clone https://github.com/kadokko/env-multi-elements.git
+$ cd env-multi-elements
 $ vagrant up
 $ vagrant ssh
-$ cd /vagrant_data
-$ ./startup.sh
+$ cd /vagrant_share
+$ ./start.sh
 ```
 
 * elements-cli
