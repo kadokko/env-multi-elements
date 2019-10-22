@@ -4,7 +4,7 @@ Vagrant.configure("2") do |config|
   config.vm.hostname = "multi-elements"
 
   config.vm.network "private_network", ip: "192.168.33.10"
-  config.vm.synced_folder ".", "/vagrant_data", :owner => "vagrant", :group => "vagrant", :mount_options => ['dmode=755', 'fmode=755']
+  config.vm.synced_folder ".", "/vagrant_share", :owner => "vagrant", :group => "vagrant", :mount_options => ['dmode=755', 'fmode=755']
   config.vm.provider "virtualbox" do |vb|
     vb.memory = "2048"
     vb.name = "multi-elements"
